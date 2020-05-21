@@ -9,11 +9,34 @@ public class Driver {
         //create a branch
         Branch branch=headOffice.createBranch();
         //create a savings account
-        BankAccount bankAccount=branch.createBankAccount("1","Saving",40000.0);
+        BankAccount savingBankAccount=branch.createBankAccount("1","Saving",40000.0);
         //deposit amount
-        bankAccount.deposit(10000.0);
-        System.out.println(bankAccount.getCurrentBalance());
-        bankAccount.withdraw(550000);
+        savingBankAccount.deposit(10000.0);
+
+        System.out.println(savingBankAccount.getCurrentBalance());
+
+        //will throw exception
+        try{
+            savingBankAccount.withdraw(550000);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //withdraw amount
+        savingBankAccount.withdraw(500);
+
+        //Create a current account
+        BankAccount currentBankAccount=branch.createBankAccount("1","current",10000.0);
+
+        //throws an exception
+        try{
+            currentBankAccount.withdraw(5000);
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+
+        //gets the customer
+        System.out.println(branch.getCustomerByPan("1"));
 
     }
 }
